@@ -1,11 +1,13 @@
-import joblib
 import os
-from utils.feature_extraction import extract_lexical_features
+import joblib
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-rf_model = joblib.load(os.path.join(BASE_DIR, "models", "random_forest_model.pkl"))
-vectorizer = joblib.load(os.path.join(BASE_DIR, "models", "vectorizer.pkl"))
+model_path = os.path.join(BASE_DIR, "models", "random_forest.pkl")
+vectorizer_path = os.path.join(BASE_DIR, "models", "vectorizer.pkl")
+
+model = joblib.load(model_path)
+vectorizer = joblib.load(vectorizer_path)
 
 
 def rf_predict(url):
